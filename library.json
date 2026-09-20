@@ -1,62 +1,46 @@
 {
   "images": {
     "IMG-20250717-WA0007": {
-      "histogram": [
-        0.37479427083333333,
-        0.032859375,
-        0.23019010416666666,
-        0.10284375,
-        0.1218046875,
-        0.0038151041666666667,
-        0.13369270833333333
-      ],
-      "legacy": false,
+      "histogram": null,
+      "legacy": true,
       "name": "IMG-20250717-WA0007",
-      "rendered_at": 1789892749.5012434,
+      "rendered_at": null,
       "settings": {
-        "brightness": 0.95,
-        "contrast": 0.87,
-        "cx": 0.2850648609056969,
-        "cy": 0.27087356798272194,
+        "brightness": 1.0,
+        "contrast": 1.0,
+        "cx": 0.5,
+        "cy": 0.5,
         "dither_enabled": true,
-        "green_reduce": 0.6,
+        "green_reduce": 0.0,
         "rotate": 0,
-        "saturation": 0.66,
-        "sharpen": 0,
-        "zoom": 3.5833235364008504
+        "saturation": 1.0,
+        "sharpen": 0.0,
+        "zoom": 1.0
       },
-      "source": "original/IMG-20250717-WA0007.jpg",
-      "source_mtime": 1758550806.3269122,
+      "source": "input/IMG-20250717-WA0007.png",
+      "source_mtime": null,
       "stale": true
     },
     "IMG_20250721_185359": {
-      "histogram": [
-        0.23378645833333334,
-        0.13280208333333332,
-        0.2475625,
-        0.37659895833333334,
-        9.114583333333334e-05,
-        0.0040494791666666665,
-        0.005109375
-      ],
-      "legacy": false,
+      "histogram": null,
+      "legacy": true,
       "name": "IMG_20250721_185359",
-      "rendered_at": 1789891788.8272183,
+      "rendered_at": null,
       "settings": {
         "brightness": 1.0,
-        "contrast": 1.25,
-        "cx": 0.45,
-        "cy": 0.4,
+        "contrast": 1.0,
+        "cx": 0.5,
+        "cy": 0.5,
         "dither_enabled": true,
-        "green_reduce": 0.45,
+        "green_reduce": 0.0,
         "rotate": 0,
-        "saturation": 1.3,
-        "sharpen": 0.5,
-        "zoom": 1.6
+        "saturation": 1.0,
+        "sharpen": 0.0,
+        "zoom": 1.0
       },
-      "source": "original/IMG_20250721_185359.jpg",
-      "source_mtime": 1758550806.3184025,
-      "stale": false
+      "source": "input/IMG_20250721_185359.png",
+      "source_mtime": null,
+      "stale": true
     },
     "aida": {
       "histogram": [
@@ -86,6 +70,27 @@
       "source": "input/aida.png",
       "source_mtime": 1758563630.2362652,
       "stale": false
+    },
+    "alpen": {
+      "histogram": null,
+      "legacy": false,
+      "name": "alpen",
+      "rendered_at": null,
+      "settings": {
+        "brightness": 1.0,
+        "contrast": 1.0,
+        "cx": 0.5,
+        "cy": 0.5,
+        "dither_enabled": true,
+        "green_reduce": 0.0,
+        "rotate": 0,
+        "saturation": 1.0,
+        "sharpen": 0.0,
+        "zoom": 1.0
+      },
+      "source": "original/alpen.jpg",
+      "source_mtime": null,
+      "stale": true
     },
     "alpen_knacker": {
       "histogram": [
@@ -785,28 +790,28 @@
     },
     "olympia": {
       "histogram": [
-        0.15053385416666668,
-        0.11278125,
-        0.24995833333333334,
-        0.28075520833333334,
-        0.0275390625,
-        0.015703125,
-        0.16272916666666667
+        0.15625260416666667,
+        0.14515364583333334,
+        0.19584114583333334,
+        0.28298958333333335,
+        0.090765625,
+        0.008169270833333334,
+        0.120828125
       ],
       "legacy": false,
       "name": "olympia",
-      "rendered_at": 1789892315.6197302,
+      "rendered_at": 1789898912.727677,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
+        "brightness": 1.06,
+        "contrast": 0.77,
         "cx": 0.5,
         "cy": 0.5,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0.3,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 0.98,
+        "sharpen": 0,
+        "zoom": 1
       },
       "source": "original/olympia.jpg",
       "source_mtime": 1716727610.7203152,
@@ -869,6 +874,27 @@
       "source": "original/spiegel_glotz.jpg",
       "source_mtime": 1761990482.5383039,
       "stale": false
+    },
+    "yamaha": {
+      "histogram": null,
+      "legacy": false,
+      "name": "yamaha",
+      "rendered_at": null,
+      "settings": {
+        "brightness": 1.0,
+        "contrast": 1.0,
+        "cx": 0.5,
+        "cy": 0.5,
+        "dither_enabled": true,
+        "green_reduce": 0.0,
+        "rotate": 0,
+        "saturation": 1.0,
+        "sharpen": 0.0,
+        "zoom": 1.0
+      },
+      "source": "original/yamaha.jpg",
+      "source_mtime": null,
+      "stale": true
     },
     "zocktopus": {
       "histogram": [

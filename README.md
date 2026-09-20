@@ -20,6 +20,7 @@ python app.py          →  http://localhost:5000
 
 **Send to frame** skips all of that and POSTs what you are currently looking at
 straight to the ESP32, for checking colours on the real panel before committing.
+It waits for the panel to be ready first — see below.
 
 Settings live in `library.json`, keyed by image name, so `input/` and `output/`
 are always reproducible from `original/` plus that file.
@@ -81,6 +82,34 @@ The 13 images that only exist as already-dithered PNGs in `input/` (no file in
 `.glds`. Drop a real original into `original/` under the same name and the entry
 unlocks.
 
+## Talking to the frame
+
+The panel takes ~30s to refresh and then rests for 2 minutes, and the firmware
+refuses every refresh path until that has elapsed. So **Send to frame** and
+**Clear display** check `GET /status` first and only upload when the panel says
+`ready`. Posting blindly into the rest window gets a `503` whose body is easy to
+misread as success.
+
+The top bar shows the panel's state with a live countdown, and both buttons are
+disabled while it is not ready, so you can see the wait rather than fail into it.
+
+| Panel says | You get |
+|---|---|
+| `ready` | The upload proceeds |
+| `busy` | *The panel is mid-refresh. That takes about 30 seconds.* |
+| `resting` | *The panel is resting after its last refresh. Ready again in 1m 21s.* |
+| `503` on upload | Lost a race against the rest period — retry shortly |
+| `422` on upload | Short upload; **the panel is left untouched** |
+| no answer | *Cannot reach the frame at … / did not answer in time* |
+
+Firmware endpoints (`Arduino-Collection/smart_picture_frame/wifi`):
+
+| Endpoint | Method | Purpose |
+|---|---|---|
+| `/status` | GET | Panel state plus diagnostics |
+| `/clear?color=N` | GET | Clear to one palette colour |
+| `/image` | POST | One full 192000 byte frame |
+
 ## legacy_renders/
 
 The dithered renders from the old Paint.NET workflow, before this tool existed —
@@ -125,6 +154,7 @@ pictobytes/palette.py  palette, .glds packing and unpacking
 pictobytes/dither.py   serial Floyd–Steinberg with green suppression
 pictobytes/pipeline.py crop → scale → grade → dither
 pictobytes/library.py  metadata, folder scanning, render, deploy
+pictobytes/device.py   the frame: readiness checks and upload
 pictobytes/config.py   config.json
 static/                the UI
 ```

@@ -29,6 +29,9 @@ const state = {
   saveTimer: null,
   previewTimer: null,
   cards: new Map(),
+  device: null,        // last /status payload
+  deviceRestLeft: 0,   // ticked down locally between polls
+  deviceTimer: null,
 };
 
 const el = (id) => document.getElementById(id);
@@ -561,9 +564,14 @@ function wireControls() {
 
   el('btn-send').onclick = withBusy(async (button) => {
     button.textContent = 'Sending…';
-    const result = await postJSON(`/api/image/${encodeURIComponent(state.selected)}/send`,
-      { live: true, settings: state.settings });
-    toast(`Frame responded ${result.status} (${result.bytes} bytes)`, 'ok');
+    try {
+      const result = await postJSON(`/api/image/${encodeURIComponent(state.selected)}/send`,
+        { live: true, settings: state.settings });
+      toast(`Sent ${result.bytes} bytes — the panel takes ~30s to refresh, then rests 2 min.`, 'ok');
+    } finally {
+      // Either it is now refreshing, or the panel told us why not.
+      pollDevice();
+    }
   });
 
   el('btn-delete').onclick = withBusy(async () => {
@@ -606,8 +614,12 @@ function wireControls() {
   });
 
   el('btn-clear').onclick = withBusy(async () => {
-    const result = await postJSON('/api/device/clear', { color: 1 });
-    toast(`Frame responded ${result.status}`, 'ok');
+    try {
+      await postJSON('/api/device/clear', { color: 1 });
+      toast('Clearing the panel to white.', 'ok');
+    } finally {
+      pollDevice();
+    }
   });
 }
 
@@ -623,8 +635,79 @@ function withBusy(handler) {
     } finally {
       button.disabled = false;
       button.textContent = label;
+      // Send/Clear are gated on the panel being ready, so let the device state
+      // have the last word rather than leaving them enabled.
+      paintDevice();
     }
   };
+}
+
+/* ---------------------------------------------------------------- device */
+
+/* The panel needs ~30s to refresh and then rests for 2 minutes, and refuses
+ * everything in between. Poll /status so the state is visible up front rather
+ * than discovered by a failed send. */
+
+function formatSeconds(total) {
+  const s = Math.max(0, Math.round(total));
+  return s < 60 ? `${s}s` : `${Math.floor(s / 60)}m ${String(s % 60).padStart(2, '0')}s`;
+}
+
+function paintDevice() {
+  const dot = el('device-dot');
+  const text = el('device-text');
+  const status = state.device;
+
+  let kind = 'down';
+  let label = 'unreachable';
+
+  if (status && status.status === 'ready') {
+    kind = 'ready';
+    label = 'ready';
+  } else if (status) {
+    kind = 'waiting';
+    label = state.deviceRestLeft > 0
+      ? `${status.status} · ${formatSeconds(state.deviceRestLeft)}`
+      : status.status;
+  }
+
+  dot.className = 'device-dot ' + kind;
+  text.textContent = label;
+  el('device').title = state.config.device_url +
+    (status ? ` — ${status.status}` : ' — not responding');
+
+  const ready = kind === 'ready';
+  for (const id of ['btn-send', 'btn-clear']) {
+    const button = el(id);
+    if (!button) continue;
+    button.disabled = !ready;
+    button.title = ready ? '' : `Panel is ${label}`;
+  }
+}
+
+async function pollDevice() {
+  try {
+    state.device = await api('/api/device/status');
+    state.deviceRestLeft = state.device.rest_left_s || 0;
+  } catch (error) {
+    state.device = null;
+    state.deviceRestLeft = 0;
+  }
+  paintDevice();
+  clearTimeout(state.deviceTimer);
+  // Check back sooner while it is unavailable, so the countdown stays honest.
+  const ready = state.device && state.device.status === 'ready';
+  state.deviceTimer = setTimeout(pollDevice, ready ? 20000 : 5000);
+}
+
+function startDeviceTicker() {
+  setInterval(() => {
+    if (state.deviceRestLeft > 0) {
+      state.deviceRestLeft -= 1;
+      paintDevice();
+    }
+  }, 1000);
+  pollDevice();
 }
 
 /* ------------------------------------------------------------------ boot */
@@ -636,7 +719,6 @@ async function refresh() {
   state.defaults = data.defaults;
   state.config = data.config;
 
-  el('device-label').textContent = data.config.device_url;
   el('empty-src').textContent = data.config.source_dir + '/';
   renderGallery();
 }
@@ -647,6 +729,7 @@ async function refresh() {
   applyView();
   try {
     await refresh();
+    startDeviceTicker();
     if (state.images.length) select(state.images[0].name);
   } catch (error) {
     toast('Could not reach the server: ' + error.message, 'error');

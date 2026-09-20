@@ -53,10 +53,25 @@ button, input { font: inherit; color: inherit; }
 .topbar-actions { display: flex; align-items: center; gap: 8px; flex: 1; }
 
 .device {
-  color: var(--faint);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--dim);
   font-size: 12px;
   font-family: ui-monospace, Consolas, monospace;
+  white-space: nowrap;
 }
+
+.device-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--faint);
+  flex: none;
+}
+.device-dot.ready { background: #5da36a; }
+.device-dot.waiting { background: #d9a441; }
+.device-dot.down { background: var(--danger); }
 
 .btn {
   background: var(--panel-2);

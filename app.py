@@ -8,11 +8,11 @@ import io
 import os
 import traceback
 
-import requests
 from flask import Flask, jsonify, request, send_file, send_from_directory
 from PIL import Image
 from werkzeug.exceptions import HTTPException
 
+from pictobytes import device
 from pictobytes.config import BASE_DIR, config
 from pictobytes.dither import colour_histogram
 from pictobytes.library import library, png_bytes
@@ -35,6 +35,11 @@ def png_response(image, max_age=0):
 
 @app.errorhandler(Exception)
 def handle_error(error):
+    if isinstance(error, device.DeviceError):
+        payload = {'error': error.message, 'device_state': error.state}
+        if error.rest_left_s is not None:
+            payload['rest_left_s'] = error.rest_left_s
+        return jsonify(payload), error.http_status
     # Routing and other HTTP errors already carry the right status.
     if isinstance(error, HTTPException):
         return jsonify({'error': error.description}), error.code
@@ -224,9 +229,20 @@ def api_deploy_all():
 
 # ----------------------------------------------------------------- device
 
+@app.route('/api/device/status')
+def api_device_status():
+    """Panel state, so the UI can show the rest period instead of failing into it."""
+    return jsonify(device.status())
+
+
 @app.route('/api/image/<key>/send', methods=['POST'])
 def api_send(key):
-    """Push one image straight to the ESP32, bypassing GLaDOS. For colour grading."""
+    """Push one image straight to the ESP32, bypassing GLaDOS. For colour grading.
+
+    The render happens before the readiness check so a long dither cannot eat
+    into the window, and device.send_image checks /status immediately before
+    the upload.
+    """
     body = request.get_json(silent=True) or {}
     if body.get('live'):
         # Send exactly what the editor is showing, without rendering to disk first.
@@ -236,23 +252,13 @@ def api_send(key):
     else:
         payload = library.glds_bytes(key)
 
-    response = requests.post(
-        config['device_url'].rstrip('/') + '/image',
-        headers={'Content-Type': 'application/octet-stream'},
-        data=payload,
-        timeout=config['device_timeout'],
-    )
-    return jsonify({'status': response.status_code, 'bytes': len(payload), 'body': response.text[:200]})
+    return jsonify(device.send_image(payload))
 
 
 @app.route('/api/device/clear', methods=['POST'])
 def api_clear():
     colour = (request.get_json(silent=True) or {}).get('color', 1)
-    response = requests.get(
-        '%s/clear?color=%d' % (config['device_url'].rstrip('/'), int(colour)),
-        timeout=config['device_timeout'],
-    )
-    return jsonify({'status': response.status_code, 'body': response.text[:200]})
+    return jsonify(device.clear(colour))
 
 
 if __name__ == '__main__':
