@@ -36,6 +36,14 @@ never crosses a tile boundary and you get visible edges. `pictobytes/dither.py`
 runs one serial Floyd–Steinberg pass across the whole image, first pixel to
 last. No seams.
 
+The error is clamped to the displayable range before it is measured, not only
+before the palette lookup. Colours the palette cannot reach — a saturated cyan
+sky against a palette with no cyan — leave residual error on every pixel, and
+carried unclamped it compounds rather than saturating. Left unchecked it
+reached −5844 on an 800×480 photo and starved black, red and orange out of the
+image entirely. Output now tracks Pillow's own Floyd–Steinberg to within 1% per
+colour.
+
 **Too much green.** Two things go wrong at once. The panel over-renders green,
 so any area containing green pixels reads as green-dominant — and the nominal
 green `#527743` is a dark desaturated olive, so the matcher also reaches for it
@@ -49,8 +57,8 @@ adjusted colour, so neighbours compensate coherently:
 
 | Green reduction | green pixels (test image) |
 |---|---|
-| 0%   | 24% |
-| 40%  | 13% |
+| 0%   | 25% |
+| 40%  | 14% |
 | 70%  | 9%  |
 | 100% | 7%  |
 

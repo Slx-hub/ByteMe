@@ -99,14 +99,20 @@ def dither(rgb, green_reduce=0.0):
 
         for x in range(width):
             pixel = row[x]
-            r = pixel[0]
-            g = pixel[1]
-            b = pixel[2]
+            # Clamp to the displayable range *before* measuring the error, not
+            # just before the palette lookup. A colour the palette cannot reach
+            # -- a saturated cyan sky, say, against a palette with no cyan --
+            # leaves residual error every pixel. Carried unclamped that
+            # compounds instead of saturating: working values reached -5844 on
+            # an 800x480 photo, and the flood of error starved black, red and
+            # orange out of the whole image. Error that would push a pixel
+            # outside 0..255 is not recoverable by any later pixel anyway.
+            r = 0.0 if pixel[0] < 0.0 else (255.0 if pixel[0] > 255.0 else pixel[0])
+            g = 0.0 if pixel[1] < 0.0 else (255.0 if pixel[1] > 255.0 else pixel[1])
+            b = 0.0 if pixel[2] < 0.0 else (255.0 if pixel[2] > 255.0 else pixel[2])
 
-            ri = 0 if r < 0.0 else (255 if r > 255.0 else int(r))
-            gi = 0 if g < 0.0 else (255 if g > 255.0 else int(g))
-            bi = 0 if b < 0.0 else (255 if b > 255.0 else int(b))
-            key = ((ri >> _SHIFT) << (2 * _BITS)) | ((gi >> _SHIFT) << _BITS) | (bi >> _SHIFT)
+            key = ((int(r) >> _SHIFT) << (2 * _BITS)) | \
+                  ((int(g) >> _SHIFT) << _BITS) | (int(b) >> _SHIFT)
 
             index = lut_best[key]
             out_row[x] = index

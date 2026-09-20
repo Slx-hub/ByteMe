@@ -1,46 +1,62 @@
 {
   "images": {
     "aida": {
-      "histogram": null,
+      "histogram": [
+        0.0,
+        0.22962760416666667,
+        0.09828125,
+        0.64075,
+        0.0,
+        0.031341145833333334,
+        0.0
+      ],
       "legacy": false,
       "name": "aida",
-      "rendered_at": null,
+      "rendered_at": 1789902112.9087434,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
-        "cx": 0.5,
-        "cy": 0.5,
+        "brightness": 1.4,
+        "contrast": 0.71,
+        "cx": 0.4011159411121756,
+        "cy": 0.2705744083670875,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 1.59,
+        "sharpen": 0,
+        "zoom": 1.582490702782533
       },
       "source": "original/aida.jpg",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1789901107.587967,
+      "stale": false
     },
     "alpen": {
-      "histogram": null,
+      "histogram": [
+        0.26045572916666665,
+        0.13747395833333334,
+        0.226078125,
+        0.1395625,
+        0.10913802083333334,
+        0.0086875,
+        0.11860416666666666
+      ],
       "legacy": false,
       "name": "alpen",
-      "rendered_at": null,
+      "rendered_at": 1789902449.9030116,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
-        "cx": 0.5,
-        "cy": 0.5,
+        "brightness": 1.03,
+        "contrast": 0.98,
+        "cx": 0.42906486090569695,
+        "cy": 0.41072687672089614,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0.1,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 0.68,
+        "sharpen": 0,
+        "zoom": 1.1653249789427378
       },
       "source": "original/alpen.jpg",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1758550806.3269122,
+      "stale": false
     },
     "breloom": {
       "histogram": null,
