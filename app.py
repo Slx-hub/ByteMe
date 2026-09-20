@@ -11,6 +11,7 @@ import traceback
 import requests
 from flask import Flask, jsonify, request, send_file, send_from_directory
 from PIL import Image
+from werkzeug.exceptions import HTTPException
 
 from pictobytes.config import BASE_DIR, config
 from pictobytes.dither import colour_histogram
@@ -34,6 +35,9 @@ def png_response(image, max_age=0):
 
 @app.errorhandler(Exception)
 def handle_error(error):
+    # Routing and other HTTP errors already carry the right status.
+    if isinstance(error, HTTPException):
+        return jsonify({'error': error.description}), error.code
     if isinstance(error, KeyError):
         return jsonify({'error': 'unknown image %s' % error}), 404
     if isinstance(error, FileNotFoundError):
@@ -47,6 +51,13 @@ def handle_error(error):
 @app.route('/')
 def index():
     return send_from_directory(os.path.join(BASE_DIR, 'static'), 'index.html')
+
+
+@app.route('/favicon.ico')
+def favicon():
+    # A flat tile in the panel's own green, just to stop the 404.
+    pixel = Image.new('RGB', (32, 32), (0x52, 0x77, 0x43))
+    return png_response(pixel, max_age=86400)
 
 
 @app.route('/static/<path:filename>')
