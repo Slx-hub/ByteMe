@@ -2,28 +2,28 @@
   "images": {
     "aida": {
       "histogram": [
-        0.0,
-        0.22962760416666667,
-        0.09828125,
-        0.64075,
-        0.0,
-        0.031341145833333334,
-        0.0
+        0.0797734375,
+        0.15211979166666667,
+        0.0913046875,
+        0.5955286458333333,
+        0.01546875,
+        0.032489583333333336,
+        0.033315104166666665
       ],
       "legacy": false,
       "name": "aida",
-      "rendered_at": 1789902112.9087434,
+      "rendered_at": 1789902971.0154889,
       "settings": {
-        "brightness": 1.4,
-        "contrast": 0.71,
-        "cx": 0.4011159411121756,
-        "cy": 0.2705744083670875,
+        "brightness": 1.24,
+        "contrast": 0.8,
+        "cx": 0.4348222907356126,
+        "cy": 0.2614444499221709,
         "dither_enabled": true,
-        "green_reduce": 0,
+        "green_reduce": 0.2,
         "rotate": 0,
-        "saturation": 1.59,
+        "saturation": 1.5,
         "sharpen": 0,
-        "zoom": 1.582490702782533
+        "zoom": 1.5824907027825328
       },
       "source": "original/aida.jpg",
       "source_mtime": 1789901107.587967,
@@ -43,755 +43,1006 @@
       "name": "alpen",
       "rendered_at": 1789902449.9030116,
       "settings": {
-        "brightness": 1.03,
-        "contrast": 0.98,
+        "brightness": 1,
+        "contrast": 1,
         "cx": 0.42906486090569695,
         "cy": 0.41072687672089614,
         "dither_enabled": true,
         "green_reduce": 0.1,
         "rotate": 0,
-        "saturation": 0.68,
+        "saturation": 1,
         "sharpen": 0,
         "zoom": 1.1653249789427378
       },
       "source": "original/alpen.jpg",
       "source_mtime": 1758550806.3269122,
-      "stale": false
+      "stale": true
     },
     "breloom": {
-      "histogram": null,
+      "histogram": [
+        0.3852057291666667,
+        0.12494791666666667,
+        0.08427604166666666,
+        0.0293515625,
+        0.0996953125,
+        0.03163020833333333,
+        0.24489322916666667
+      ],
       "legacy": false,
       "name": "breloom",
-      "rendered_at": null,
+      "rendered_at": 1789903057.591039,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
+        "brightness": 1.38,
+        "contrast": 1.19,
         "cx": 0.5,
-        "cy": 0.5,
+        "cy": 0.4,
         "dither_enabled": true,
-        "green_reduce": 0.0,
-        "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "green_reduce": 0,
+        "rotate": 90,
+        "saturation": 1.25,
+        "sharpen": 0,
+        "zoom": 1
       },
       "source": "original/breloom.jpg",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1789899848.5163164,
+      "stale": false
     },
     "chris_zeigt": {
-      "histogram": null,
+      "histogram": [
+        0.19189322916666668,
+        0.22873697916666666,
+        0.15572916666666667,
+        0.10775,
+        0.17212760416666667,
+        0.0075625,
+        0.13620052083333334
+      ],
       "legacy": false,
       "name": "chris_zeigt",
-      "rendered_at": null,
+      "rendered_at": 1789903099.7431157,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
+        "brightness": 0.93,
+        "contrast": 1.14,
         "cx": 0.5,
         "cy": 0.5,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 1.55,
+        "sharpen": 0,
+        "zoom": 1
       },
       "source": "original/chris_zeigt.png",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1761990859.4127922,
+      "stale": false
+    },
+    "christmas_18": {
+      "histogram": [
+        0.24809375,
+        0.27260416666666665,
+        0.013015625,
+        0.008736979166666667,
+        0.11461458333333334,
+        0.07235416666666666,
+        0.27058072916666664
+      ],
+      "legacy": false,
+      "name": "christmas_18",
+      "rendered_at": 1789903169.6021159,
+      "settings": {
+        "brightness": 0.84,
+        "contrast": 1.07,
+        "cx": 0.5,
+        "cy": 0.5,
+        "dither_enabled": true,
+        "green_reduce": 0,
+        "rotate": 0,
+        "saturation": 1.24,
+        "sharpen": 0.26,
+        "zoom": 1
+      },
+      "source": "original/christmas_18.jpg",
+      "source_mtime": 1789901631.169674,
+      "stale": false
     },
     "glotz": {
-      "histogram": null,
+      "histogram": [
+        0.16233072916666666,
+        0.09219270833333333,
+        0.10490104166666667,
+        0.0509453125,
+        0.3033411458333333,
+        0.005942708333333334,
+        0.28034635416666664
+      ],
       "legacy": false,
       "name": "glotz",
-      "rendered_at": null,
+      "rendered_at": 1789903227.4606779,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
-        "cx": 0.5,
-        "cy": 0.5,
+        "brightness": 0.86,
+        "contrast": 0.83,
+        "cx": 0.443206096813287,
+        "cy": 0.29455464778244017,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 1.43,
+        "sharpen": 0,
+        "zoom": 1.357982306547892
       },
       "source": "original/glotz.jpg",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1761316507.684426,
+      "stale": false
     },
     "glotz2": {
-      "histogram": null,
+      "histogram": [
+        0.21783333333333332,
+        0.22896875,
+        0.1922421875,
+        0.10309114583333333,
+        0.1432265625,
+        0.011565104166666666,
+        0.10307291666666667
+      ],
       "legacy": false,
       "name": "glotz2",
-      "rendered_at": null,
+      "rendered_at": 1789903305.9226573,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
+        "brightness": 0.85,
+        "contrast": 1.01,
         "cx": 0.5,
         "cy": 0.5,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 1.12,
+        "sharpen": 0.36,
+        "zoom": 1
       },
       "source": "original/glotz2.jpg",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1789899848.596391,
+      "stale": false
     },
     "gull": {
-      "histogram": null,
+      "histogram": [
+        0.0446328125,
+        0.34655989583333335,
+        0.09852864583333333,
+        0.40684635416666665,
+        0.035354166666666666,
+        0.010247395833333334,
+        0.057830729166666664
+      ],
       "legacy": false,
       "name": "gull",
-      "rendered_at": null,
+      "rendered_at": 1789903374.631284,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
+        "brightness": 1.05,
+        "contrast": 1.03,
         "cx": 0.5,
-        "cy": 0.5,
+        "cy": 0.4494580185459069,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 1.33,
+        "sharpen": 0.42,
+        "zoom": 1
       },
       "source": "original/gull.jpg",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1758550806.2868001,
+      "stale": false
     },
     "guller": {
-      "histogram": null,
+      "histogram": [
+        0.3223567708333333,
+        0.289375,
+        0.0313203125,
+        0.0298671875,
+        0.10313541666666666,
+        0.06878645833333333,
+        0.15515885416666667
+      ],
       "legacy": false,
       "name": "guller",
-      "rendered_at": null,
+      "rendered_at": 1789903430.652271,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
-        "cx": 0.5,
-        "cy": 0.5,
+        "brightness": 1.09,
+        "contrast": 1.24,
+        "cx": 0.612280417653518,
+        "cy": 0.3348104496460412,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 1.22,
+        "sharpen": 0.45,
+        "zoom": 1.3579823065478922
       },
       "source": "original/guller.jpg",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1758550806.2371314,
+      "stale": false
     },
     "halloween": {
-      "histogram": null,
+      "histogram": [
+        0.4734296875,
+        0.23711197916666665,
+        0.02421875,
+        0.0160078125,
+        0.10241666666666667,
+        0.010796875,
+        0.13601822916666667
+      ],
       "legacy": false,
       "name": "halloween",
-      "rendered_at": null,
+      "rendered_at": 1789903487.0149512,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
+        "brightness": 0.95,
+        "contrast": 1.4,
         "cx": 0.5,
         "cy": 0.5,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 1.22,
+        "sharpen": 0.49,
+        "zoom": 1
       },
       "source": "original/halloween.png",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1761990119.4625063,
+      "stale": false
     },
     "hamburg": {
-      "histogram": null,
+      "histogram": [
+        0.5506380208333334,
+        0.0254921875,
+        0.0363125,
+        0.20651041666666667,
+        0.06545572916666667,
+        0.020997395833333335,
+        0.09459375
+      ],
       "legacy": false,
       "name": "hamburg",
-      "rendered_at": null,
+      "rendered_at": 1789903542.63473,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
+        "brightness": 1.19,
+        "contrast": 1.07,
         "cx": 0.5,
         "cy": 0.5,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 1.04,
+        "sharpen": 0.46,
+        "zoom": 1
       },
       "source": "original/hamburg.jpg",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1789899854.0252087,
+      "stale": false
     },
     "hegga": {
-      "histogram": null,
+      "histogram": [
+        0.0848359375,
+        0.4140026041666667,
+        0.2887578125,
+        0.08493489583333333,
+        0.019828125,
+        0.035578125,
+        0.0720625
+      ],
       "legacy": false,
       "name": "hegga",
-      "rendered_at": null,
+      "rendered_at": 1789903615.2547882,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
-        "cx": 0.5,
-        "cy": 0.5,
+        "brightness": 0.96,
+        "contrast": 1.2,
+        "cx": 0.5379028102310641,
+        "cy": 0.6699009464229686,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 1.54,
+        "sharpen": 0.3,
+        "zoom": 1.3579823065478922
       },
       "source": "original/hegga.png",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1761990108.2246325,
+      "stale": false
     },
     "hexensteig": {
-      "histogram": null,
+      "histogram": [
+        0.3199375,
+        0.1263984375,
+        0.24103645833333334,
+        0.07564322916666667,
+        0.07440364583333334,
+        0.030190104166666665,
+        0.132390625
+      ],
       "legacy": false,
       "name": "hexensteig",
-      "rendered_at": null,
+      "rendered_at": 1789903666.6176744,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
-        "cx": 0.5,
-        "cy": 0.5,
+        "brightness": 1.04,
+        "contrast": 1.23,
+        "cx": 0.4603440584181987,
+        "cy": 0.47425450929424223,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 1.25,
+        "sharpen": 0.33,
+        "zoom": 1.1653249789427378
       },
       "source": "original/hexensteig.png",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1716756963.7706194,
+      "stale": false
     },
     "honda": {
-      "histogram": null,
+      "histogram": [
+        0.3020260416666667,
+        0.25158854166666667,
+        0.13490885416666668,
+        0.11604947916666666,
+        0.041338541666666666,
+        0.08070052083333333,
+        0.07338802083333333
+      ],
       "legacy": false,
       "name": "honda",
-      "rendered_at": null,
+      "rendered_at": 1789903710.5450387,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
-        "cx": 0.5,
-        "cy": 0.5,
+        "brightness": 1.06,
+        "contrast": 1.2,
+        "cx": 0.5151231524599373,
+        "cy": 0.6527491249098969,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 1.08,
+        "sharpen": 0.28,
+        "zoom": 1.3579823065478922
       },
       "source": "original/honda.jpg",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1789899848.5596526,
+      "stale": false
     },
     "honk": {
-      "histogram": null,
+      "histogram": [
+        0.3474921875,
+        0.11353385416666667,
+        0.375609375,
+        0.007432291666666667,
+        0.007385416666666667,
+        0.08912239583333334,
+        0.05942447916666667
+      ],
       "legacy": false,
       "name": "honk",
-      "rendered_at": null,
+      "rendered_at": 1789903743.8557513,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
+        "brightness": 1.04,
+        "contrast": 1.22,
         "cx": 0.5,
         "cy": 0.5,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 1.04,
+        "sharpen": 0.24,
+        "zoom": 1
       },
       "source": "original/honk.jpg",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1789899854.1370354,
+      "stale": false
     },
     "hornisgrinde": {
-      "histogram": null,
+      "histogram": [
+        0.3532421875,
+        0.21832552083333334,
+        0.11842447916666667,
+        0.22347395833333333,
+        0.024421875,
+        0.020611979166666666,
+        0.0415
+      ],
       "legacy": false,
       "name": "hornisgrinde",
-      "rendered_at": null,
+      "rendered_at": 1789903769.264218,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
+        "brightness": 0.97,
+        "contrast": 1.15,
         "cx": 0.5,
         "cy": 0.5,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 1,
+        "sharpen": 0.22,
+        "zoom": 1
       },
       "source": "original/hornisgrinde.jpg",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1761990409.2626116,
+      "stale": false
     },
     "japan_cats": {
-      "histogram": null,
+      "histogram": [
+        0.130890625,
+        0.39073697916666666,
+        0.16140625,
+        0.14581510416666665,
+        0.07326041666666666,
+        0.010651041666666666,
+        0.08723958333333333
+      ],
       "legacy": false,
       "name": "japan_cats",
-      "rendered_at": null,
+      "rendered_at": 1789903813.5487654,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
-        "cx": 0.5,
-        "cy": 0.5,
+        "brightness": 1.12,
+        "contrast": 0.89,
+        "cx": 0.5282747024110198,
+        "cy": 0.47174983712022944,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 1.27,
+        "sharpen": 0.27,
+        "zoom": 3.400763618223848
       },
       "source": "original/japan_cats.jpg",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1789901092.7753506,
+      "stale": false
     },
     "japan_deer": {
-      "histogram": null,
+      "histogram": [
+        0.4185729166666667,
+        0.14071875,
+        0.18886197916666667,
+        0.0694453125,
+        0.07436979166666667,
+        0.008440104166666667,
+        0.09959114583333334
+      ],
       "legacy": false,
       "name": "japan_deer",
-      "rendered_at": null,
+      "rendered_at": 1789903844.8018384,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
-        "cx": 0.5,
-        "cy": 0.5,
+        "brightness": 0.86,
+        "contrast": 1.25,
+        "cx": 0.47808600739843043,
+        "cy": 0.36035965262760944,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 1,
+        "sharpen": 0.32,
+        "zoom": 1.3579823065478922
       },
       "source": "original/japan_deer.jpg",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1789901092.8669965,
+      "stale": false
     },
     "japan_insel": {
-      "histogram": null,
+      "histogram": [
+        0.1962265625,
+        0.32528385416666666,
+        0.14546875,
+        0.32403125,
+        0.004546875,
+        0.000421875,
+        0.004020833333333334
+      ],
       "legacy": false,
       "name": "japan_insel",
-      "rendered_at": null,
+      "rendered_at": 1789903966.296925,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
+        "brightness": 1.05,
+        "contrast": 0.77,
         "cx": 0.5,
         "cy": 0.5,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 1,
+        "sharpen": 0.47,
+        "zoom": 1
       },
       "source": "original/japan_insel.jpg",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1761990530.6525686,
+      "stale": false
     },
     "japan_mario": {
-      "histogram": null,
+      "histogram": [
+        0.2530833333333333,
+        0.21508072916666668,
+        0.056466145833333335,
+        0.18568489583333334,
+        0.14723697916666667,
+        0.03673958333333333,
+        0.10570833333333333
+      ],
       "legacy": false,
       "name": "japan_mario",
-      "rendered_at": null,
+      "rendered_at": 1789904063.6042974,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
+        "brightness": 1.16,
+        "contrast": 1,
         "cx": 0.5,
         "cy": 0.5,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0.13,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 1.19,
+        "sharpen": 0.12,
+        "zoom": 1
       },
       "source": "original/japan_mario.jpg",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1789901092.8316271,
+      "stale": false
     },
     "japan_pokemon": {
-      "histogram": null,
+      "histogram": [
+        0.27398958333333334,
+        0.12762239583333335,
+        0.17802864583333333,
+        0.05652083333333333,
+        0.08712239583333334,
+        0.022986979166666668,
+        0.2537291666666667
+      ],
       "legacy": false,
       "name": "japan_pokemon",
-      "rendered_at": null,
+      "rendered_at": 1789904105.4922848,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
-        "cx": 0.5,
-        "cy": 0.5,
+        "brightness": 0.86,
+        "contrast": 1.17,
+        "cx": 0.49582173484611586,
+        "cy": 0.4791973048317956,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 1.43,
+        "sharpen": 0.25,
+        "zoom": 1.1653249789427378
       },
       "source": "original/japan_pokemon.jpg",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1789901092.8923676,
+      "stale": false
     },
     "japan_river": {
-      "histogram": null,
+      "histogram": [
+        0.37274739583333333,
+        0.12397395833333333,
+        0.167359375,
+        0.14551822916666668,
+        0.0569140625,
+        0.035791666666666666,
+        0.0976953125
+      ],
       "legacy": false,
       "name": "japan_river",
-      "rendered_at": null,
+      "rendered_at": 1789904141.284425,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
-        "cx": 0.5,
-        "cy": 0.5,
+        "brightness": 0.86,
+        "contrast": 1.3,
+        "cx": 0.4058012630075895,
+        "cy": 0.5187487873006135,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 1.37,
+        "sharpen": 0.27,
+        "zoom": 1.582490702782533
       },
       "source": "original/japan_river.jpg",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1789901092.810762,
+      "stale": false
     },
     "japan_schlucht": {
-      "histogram": null,
+      "histogram": [
+        0.3617890625,
+        0.1420390625,
+        0.22021875,
+        0.12840104166666666,
+        0.042354166666666665,
+        0.021604166666666667,
+        0.08359375
+      ],
       "legacy": false,
       "name": "japan_schlucht",
-      "rendered_at": null,
+      "rendered_at": 1789904179.9564204,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
-        "cx": 0.5,
-        "cy": 0.5,
+        "brightness": 1.03,
+        "contrast": 0.78,
+        "cx": 0.40869457379813484,
+        "cy": 0.6011017717405571,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 1.25,
+        "sharpen": 0,
+        "zoom": 1.3579823065478922
       },
       "source": "original/japan_schlucht.JPG",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1761991859.738758,
+      "stale": false
     },
     "japan_temples": {
-      "histogram": null,
+      "histogram": [
+        0.21080208333333333,
+        0.23125,
+        0.211796875,
+        0.24735677083333332,
+        0.036,
+        0.0148046875,
+        0.047989583333333335
+      ],
       "legacy": false,
       "name": "japan_temples",
-      "rendered_at": null,
+      "rendered_at": 1789904220.3979363,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
-        "cx": 0.5,
-        "cy": 0.5,
+        "brightness": 0.85,
+        "contrast": 1.17,
+        "cx": 0.5174188193776544,
+        "cy": 0.5751880500661005,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 1.34,
+        "sharpen": 0,
+        "zoom": 1.8441159448971336
       },
       "source": "original/japan_temples.JPG",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1789901092.9204519,
+      "stale": false
     },
     "kuh_dreierlei": {
-      "histogram": null,
+      "histogram": [
+        0.271359375,
+        0.1863125,
+        0.24686979166666667,
+        0.14300520833333333,
+        0.020635416666666666,
+        0.07985677083333333,
+        0.0519609375
+      ],
       "legacy": false,
       "name": "kuh_dreierlei",
-      "rendered_at": null,
+      "rendered_at": 1789904268.0820253,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
-        "cx": 0.5,
-        "cy": 0.5,
+        "brightness": 1.1,
+        "contrast": 0.9,
+        "cx": 0.5512386943173666,
+        "cy": 0.47022460062706084,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 1.77,
+        "sharpen": 0.72,
+        "zoom": 1.5824907027825328
       },
       "source": "original/kuh_dreierlei.jpg",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1761991490.204697,
+      "stale": false
     },
     "lissabon": {
-      "histogram": null,
+      "histogram": [
+        0.22545572916666667,
+        0.23869270833333334,
+        0.3251614583333333,
+        0.0554453125,
+        0.0478046875,
+        0.060994791666666666,
+        0.0464453125
+      ],
       "legacy": false,
       "name": "lissabon",
-      "rendered_at": null,
+      "rendered_at": 1789904305.8745315,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
-        "cx": 0.5,
-        "cy": 0.5,
+        "brightness": 1.06,
+        "contrast": 1.33,
+        "cx": 0.4623372289489582,
+        "cy": 0.5313862911734983,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 0.89,
+        "sharpen": 0.37,
+        "zoom": 1.582490702782533
       },
       "source": "original/lissabon.jpg",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1758550806.2607794,
+      "stale": false
     },
     "malaga": {
-      "histogram": null,
+      "histogram": [
+        0.20627864583333333,
+        0.16268489583333334,
+        0.2538515625,
+        0.1226953125,
+        0.06282291666666667,
+        0.042106770833333335,
+        0.14955989583333335
+      ],
       "legacy": false,
       "name": "malaga",
-      "rendered_at": null,
+      "rendered_at": 1789904336.230994,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
+        "brightness": 1.01,
+        "contrast": 0.75,
         "cx": 0.5,
         "cy": 0.5,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 1.55,
+        "sharpen": 0.43,
+        "zoom": 1
       },
       "source": "original/malaga.jpg",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1789899854.0768528,
+      "stale": false
     },
     "matterhorn": {
-      "histogram": null,
+      "histogram": [
+        0.14658854166666666,
+        0.32985416666666667,
+        0.12915364583333333,
+        0.37150260416666664,
+        0.012515625,
+        0.000734375,
+        0.009651041666666667
+      ],
       "legacy": false,
       "name": "matterhorn",
-      "rendered_at": null,
+      "rendered_at": 1789904381.138878,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
+        "brightness": 1.25,
+        "contrast": 0.89,
         "cx": 0.5,
-        "cy": 0.5,
+        "cy": 0.533333333333335,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 1,
+        "sharpen": 0.48,
+        "zoom": 1
       },
       "source": "original/matterhorn.jpg",
-      "source_mtime": null,
-      "stale": true
-    },
-    "miku": {
-      "histogram": null,
-      "legacy": false,
-      "name": "miku",
-      "rendered_at": null,
-      "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
-        "cx": 0.5,
-        "cy": 0.5,
-        "dither_enabled": true,
-        "green_reduce": 0.0,
-        "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
-      },
-      "source": "original/miku.jpg",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1789899848.5332484,
+      "stale": false
     },
     "molly_hide": {
-      "histogram": null,
+      "histogram": [
+        0.344890625,
+        0.19826041666666666,
+        0.15344791666666666,
+        0.035984375,
+        0.1219765625,
+        0.015096354166666666,
+        0.13034375
+      ],
       "legacy": false,
       "name": "molly_hide",
-      "rendered_at": null,
+      "rendered_at": 1789904485.6173878,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
-        "cx": 0.5,
-        "cy": 0.5,
+        "brightness": 0.9,
+        "contrast": 1.25,
+        "cx": 0.5281169046622509,
+        "cy": 0.5314892432657509,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0.12,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 1,
+        "sharpen": 0.4,
+        "zoom": 2.9182963376527398
       },
       "source": "original/molly_hide.jpg",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1789900913.3476353,
+      "stale": false
     },
     "molly_scritches": {
-      "histogram": null,
+      "histogram": [
+        0.21705208333333334,
+        0.22933333333333333,
+        0.18096354166666667,
+        0.11366145833333334,
+        0.06550520833333333,
+        0.017830729166666667,
+        0.17565364583333334
+      ],
       "legacy": false,
       "name": "molly_scritches",
-      "rendered_at": null,
+      "rendered_at": 1789904529.8425512,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
-        "cx": 0.5,
-        "cy": 0.5,
+        "brightness": 0.94,
+        "contrast": 1.13,
+        "cx": 0.5709351390943029,
+        "cy": 0.3432518887245577,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 1.42,
+        "sharpen": 0.4,
+        "zoom": 1.1653249789427376
       },
       "source": "original/molly_scritches.jpg",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1789901107.609255,
+      "stale": false
     },
     "molly_whine": {
-      "histogram": null,
+      "histogram": [
+        0.3996328125,
+        0.14368229166666666,
+        0.19302083333333334,
+        0.057419270833333334,
+        0.041859375,
+        0.03709375,
+        0.12729166666666666
+      ],
       "legacy": false,
       "name": "molly_whine",
-      "rendered_at": null,
+      "rendered_at": 1789904578.1315644,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
-        "cx": 0.5,
-        "cy": 0.5,
+        "brightness": 0.85,
+        "contrast": 1.3,
+        "cx": 0.5525444801067677,
+        "cy": 0.5001392315818353,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0.22,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 1.48,
+        "sharpen": 0.41,
+        "zoom": 1.1653249789427376
       },
       "source": "original/molly_whine.jpg",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1789901049.4242694,
+      "stale": false
     },
     "olympia": {
-      "histogram": null,
+      "histogram": [
+        0.24864322916666667,
+        0.14876041666666667,
+        0.0396953125,
+        0.19420052083333333,
+        0.06172916666666667,
+        0.09235677083333334,
+        0.21461458333333333
+      ],
       "legacy": false,
       "name": "olympia",
-      "rendered_at": null,
+      "rendered_at": 1789904617.0978563,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
-        "cx": 0.5,
-        "cy": 0.5,
+        "brightness": 1.13,
+        "contrast": 1.19,
+        "cx": 0.35829811452910904,
+        "cy": 0.5190263192942756,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0.2,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 1.37,
+        "sharpen": 0.45,
+        "zoom": 1.3579823065478922
       },
       "source": "original/olympia.jpg",
-      "source_mtime": null,
-      "stale": true
-    },
-    "pokemon_haul": {
-      "histogram": null,
-      "legacy": false,
-      "name": "pokemon_haul",
-      "rendered_at": null,
-      "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
-        "cx": 0.5,
-        "cy": 0.5,
-        "dither_enabled": true,
-        "green_reduce": 0.0,
-        "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
-      },
-      "source": "original/pokemon_haul.jpg",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1716727610.7203152,
+      "stale": false
     },
     "rip": {
-      "histogram": null,
+      "histogram": [
+        0.041895833333333334,
+        0.33210416666666664,
+        0.13964583333333333,
+        0.0921796875,
+        0.0962890625,
+        0.05316666666666667,
+        0.24471875
+      ],
       "legacy": false,
       "name": "rip",
-      "rendered_at": null,
+      "rendered_at": 1789904707.2122471,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
-        "cx": 0.5,
-        "cy": 0.5,
+        "brightness": 0.96,
+        "contrast": 0.96,
+        "cx": 0.46344448038030883,
+        "cy": 0.4863577667159658,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0.1,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 1.23,
+        "sharpen": 0.43,
+        "zoom": 1.1653249789427378
       },
       "source": "original/rip.jpg",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1789899854.043973,
+      "stale": false
     },
     "spiegel_glotz": {
-      "histogram": null,
+      "histogram": [
+        0.39193489583333335,
+        0.28316145833333334,
+        0.12690885416666667,
+        0.07011979166666667,
+        0.04891145833333333,
+        0.0095,
+        0.06946354166666667
+      ],
       "legacy": false,
       "name": "spiegel_glotz",
-      "rendered_at": null,
+      "rendered_at": 1789904750.127074,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
-        "cx": 0.5,
-        "cy": 0.5,
+        "brightness": 1.2,
+        "contrast": 0.82,
+        "cx": 0.429324072250954,
+        "cy": 0.5842846712919715,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 0.86,
+        "sharpen": 0.33,
+        "zoom": 1.8441159448971336
       },
       "source": "original/spiegel_glotz.jpg",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1761990482.5383039,
+      "stale": false
     },
     "yamaha": {
-      "histogram": null,
+      "histogram": [
+        0.4302213541666667,
+        0.13741927083333333,
+        0.21613802083333333,
+        0.12629166666666666,
+        0.04166145833333333,
+        0.006875,
+        0.04139322916666666
+      ],
       "legacy": false,
       "name": "yamaha",
-      "rendered_at": null,
+      "rendered_at": 1789904785.0915456,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
-        "cx": 0.5,
-        "cy": 0.5,
+        "brightness": 1.1,
+        "contrast": 0.77,
+        "cx": 0.46724606058995927,
+        "cy": 0.6062397173630111,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 0.65,
+        "sharpen": 0,
+        "zoom": 1.3579823065478922
       },
       "source": "original/yamaha.jpg",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1758550806.3184025,
+      "stale": false
     },
     "zocktopus": {
-      "histogram": null,
+      "histogram": [
+        0.3291119791666667,
+        0.10579427083333333,
+        0.008729166666666666,
+        0.026559895833333333,
+        0.15984635416666668,
+        0.06526302083333334,
+        0.3046953125
+      ],
       "legacy": false,
       "name": "zocktopus",
-      "rendered_at": null,
+      "rendered_at": 1789904827.2343967,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
-        "cx": 0.5,
-        "cy": 0.5,
+        "brightness": 0.96,
+        "contrast": 1.19,
+        "cx": 0.540842459004156,
+        "cy": 0.42333990076464884,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 0,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 1.24,
+        "sharpen": 0.3,
+        "zoom": 1.1653249789427378
       },
       "source": "original/zocktopus.jpg",
-      "source_mtime": null,
-      "stale": true
+      "source_mtime": 1761991906.0448945,
+      "stale": false
     }
   },
   "version": 1
