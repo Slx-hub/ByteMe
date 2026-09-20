@@ -257,7 +257,16 @@ button, input { font: inherit; color: inherit; }
   width: 100%;
   height: 100%;
   display: block;
+  /* Both layers are passive: every gesture belongs to .viewport, and neither
+     may become a native drag source. */
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
 }
+
+.viewport { user-select: none; -webkit-user-select: none; touch-action: none; }
+
+.card img { -webkit-user-drag: none; user-select: none; }
 
 .preview {
   image-rendering: pixelated;

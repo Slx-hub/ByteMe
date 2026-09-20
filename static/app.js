@@ -115,6 +115,7 @@ function buildCard(image) {
 
   const img = document.createElement('img');
   img.loading = 'lazy';
+  img.draggable = false;
   img.alt = image.name;
   img.onerror = () => { img.style.visibility = 'hidden'; };
   img.onload = () => { img.style.visibility = 'visible'; };
@@ -403,8 +404,13 @@ function setupGestures() {
     return image && !image.legacy && state.sourceImage;
   };
 
+  // Without this the browser starts its own image/text drag a few pixels in
+  // and the pointermove stream stops arriving.
+  viewport.addEventListener('dragstart', (event) => event.preventDefault());
+
   viewport.addEventListener('pointerdown', (event) => {
     if (!editable()) return;
+    event.preventDefault();
     dragging = true;
     last = { x: event.clientX, y: event.clientY };
     viewport.classList.add('dragging');

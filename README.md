@@ -35,18 +35,29 @@ never crosses a tile boundary and you get visible edges. `pictobytes/dither.py`
 runs one serial Floyd–Steinberg pass across the whole image, first pixel to
 last. No seams.
 
-**Too much green.** The panel over-renders green — a region with any green in it
-reads as green-dominant. The **Green reduction** slider is the probability that a
-pixel which *would* have come out green is pushed to its second-nearest palette
-colour instead. The error still diffuses normally, so the picture holds together
-and green density falls smoothly:
+**Too much green.** Two things go wrong at once. The panel over-renders green,
+so any area containing green pixels reads as green-dominant — and the nominal
+green `#527743` is a dark desaturated olive, so the matcher also reaches for it
+to represent ordinary midtones and shadows.
+
+**Green reduction** fixes both by telling the matcher green *looks* more
+saturated than its nominal value, sliding it towards fully saturated. Green then
+stops winning for neutral midtones, and where the image really is green each
+pixel counts for more, so fewer are needed. The error diffuses against the same
+adjusted colour, so neighbours compensate coherently:
 
 | Green reduction | green pixels (test image) |
 |---|---|
-| 0%  | 39% |
-| 25% | 36% |
-| 50% | 27% |
-| 75% | 15% |
+| 0%   | 24% |
+| 40%  | 13% |
+| 70%  | 9%  |
+| 100% | 7%  |
+
+What does *not* work — and was the first thing tried — is substituting
+individual green pixels for their runner-up. The green-biased error left behind
+diffuses outward, turns the neighbours green, and sprays a low-density green
+speckle across the entire image. The pixel count says it improved; looking at it
+says the opposite.
 
 The colour bar under the preview shows the live per-colour breakdown, so you can
 dial it by number rather than by eye.

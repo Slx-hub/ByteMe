@@ -2,32 +2,32 @@
   "images": {
     "IMG-20250717-WA0007": {
       "histogram": [
-        0.3434713541666667,
-        0.09612239583333333,
-        0.2422421875,
-        0.09965885416666667,
-        0.08059895833333333,
-        0.011213541666666667,
-        0.12669270833333332
+        0.37479427083333333,
+        0.032859375,
+        0.23019010416666666,
+        0.10284375,
+        0.1218046875,
+        0.0038151041666666667,
+        0.13369270833333333
       ],
       "legacy": false,
       "name": "IMG-20250717-WA0007",
-      "rendered_at": 1789892304.2702475,
+      "rendered_at": 1789892749.5012434,
       "settings": {
-        "brightness": 1.0,
-        "contrast": 1.0,
-        "cx": 0.5,
-        "cy": 0.5,
+        "brightness": 0.95,
+        "contrast": 0.87,
+        "cx": 0.4699999999999999,
+        "cy": 0.5065831100787472,
         "dither_enabled": true,
-        "green_reduce": 0.0,
+        "green_reduce": 1,
         "rotate": 0,
-        "saturation": 1.0,
-        "sharpen": 0.0,
-        "zoom": 1.0
+        "saturation": 0.66,
+        "sharpen": 0,
+        "zoom": 2
       },
       "source": "original/IMG-20250717-WA0007.jpg",
       "source_mtime": 1758550806.3269122,
-      "stale": false
+      "stale": true
     },
     "IMG_20250721_185359": {
       "histogram": [
@@ -70,7 +70,7 @@
       ],
       "legacy": true,
       "name": "aida",
-      "rendered_at": 1789891990.0468152,
+      "rendered_at": 1789893990.850633,
       "settings": {
         "brightness": 1.0,
         "contrast": 1.0,
@@ -650,7 +650,7 @@
       ],
       "legacy": false,
       "name": "lissabon",
-      "rendered_at": 1789892313.552232,
+      "rendered_at": 1789893991.6479785,
       "settings": {
         "brightness": 1.0,
         "contrast": 1.0,

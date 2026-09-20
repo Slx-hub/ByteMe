@@ -7,12 +7,24 @@ Two things make this different from a generic image editor's dither:
    boundary and you get visible seams. Here the error propagates from the first
    pixel to the last, so there are no chunk edges.
 
-2. It can thin out green. The panel over-renders green: any area containing
-   green pixels reads as green-dominant. `green_reduce` is the probability that
-   a pixel which *would* have been green is pushed to its second-nearest palette
-   colour instead. The residual error still diffuses normally, so the image
-   holds together and the green density falls smoothly with the slider.
+2. It can thin out green. The panel over-renders green: an area containing
+   green pixels reads as green-dominant, and because the nominal green
+   (#527743) is a dark desaturated olive, the matcher also reaches for it to
+   represent ordinary midtones and shadows.
+
+   `green_reduce` fixes both by telling the matcher that green *looks* more
+   saturated than its nominal value. Green then stops winning for neutral
+   midtones, and where the image really is green each pixel "counts for more",
+   so fewer are needed. The error diffuses against the same adjusted colour, so
+   the surrounding pixels compensate coherently.
+
+   Substituting individual green pixels for their runner-up does not work: the
+   green-biased error left behind diffuses outward, turns the neighbours green,
+   and spreads a green speckle across the whole image at lower density. Counting
+   green pixels says it improved; looking at it says otherwise.
 """
+
+import colorsys
 
 import numpy as np
 
@@ -25,49 +37,64 @@ _BITS = 6
 _LEVELS = 1 << _BITS
 _SHIFT = 8 - _BITS
 
-_lut_best = None
-_lut_second = None
+# Fully saturated version of the panel's green. green_reduce slides the green
+# the matcher sees from its nominal value towards this, which is what makes the
+# dither spend fewer pixels on it.
+_h, _s, _v = colorsys.rgb_to_hsv(*(PALETTE[GREEN_INDEX] / 255.0))
+VIVID_GREEN = np.array(colorsys.hsv_to_rgb(_h, 1.0, 1.0), dtype=np.float32) * 255.0
+
+# LUTs are cached per green_reduce step; the slider only has so many positions.
+_LUT_STEPS = 50
+_lut_cache = {}
 
 
-def _build_luts():
-    global _lut_best, _lut_second
-    if _lut_best is not None:
-        return
+def match_palette(green_reduce):
+    """The palette the matcher uses. Output indices are unchanged."""
+    palette = PALETTE.copy()
+    if green_reduce > 0.0:
+        palette[GREEN_INDEX] += green_reduce * (VIVID_GREEN - PALETTE[GREEN_INDEX])
+    return palette
+
+
+def _build_lut(green_reduce):
+    key = round(green_reduce * _LUT_STEPS)
+    cached = _lut_cache.get(key)
+    if cached is not None:
+        return cached
+
+    palette = match_palette(key / _LUT_STEPS)
     axis = (np.arange(_LEVELS, dtype=np.float32) + 0.5) * (256.0 / _LEVELS)
     grid = np.stack(np.meshgrid(axis, axis, axis, indexing='ij'), -1).reshape(-1, 3)
-    delta = grid[:, None, :] - PALETTE[None, :, :]
-    order = np.argsort((delta * delta).sum(2), axis=1)
-    _lut_best = order[:, 0].astype(np.uint8)
-    _lut_second = order[:, 1].astype(np.uint8)
+    delta = grid[:, None, :] - palette[None, :, :]
+    lut = (delta * delta).sum(2).argmin(1).astype(np.uint8)
+
+    _lut_cache[key] = (lut, palette)
+    return lut, palette
 
 
-def dither(rgb, green_reduce=0.0, seed=0x9E3779B9):
+def dither(rgb, green_reduce=0.0):
     """Dither an (h, w, 3) uint8 array to (h, w) uint8 palette indices.
 
-    green_reduce: 0.0 keeps every green pixel, 1.0 removes essentially all of them.
-    seed:         fixed so a given image and settings always render identically.
+    green_reduce: 0.0 uses the palette as-is, 1.0 matches against a fully
+    saturated green and so spends the fewest pixels on it. Deterministic.
     """
-    _build_luts()
+    lut, palette = _build_lut(green_reduce)
 
     height, width, _ = rgb.shape
     buf = rgb.astype(np.float32)
     out = np.empty((height, width), dtype=np.uint8)
 
     # Scalar Python in the hot loop is markedly faster than per-pixel numpy.
-    pal_r = PALETTE[:, 0].tolist()
-    pal_g = PALETTE[:, 1].tolist()
-    pal_b = PALETTE[:, 2].tolist()
-    lut_best = _lut_best.tolist()
-    lut_second = _lut_second.tolist()
-
-    suppress = green_reduce > 0.0
-    if suppress:
-        noise = np.random.default_rng(seed).random((height, width), dtype=np.float32)
+    # The error is measured against the same palette the matcher used, which is
+    # what keeps the compensation coherent instead of speckled.
+    pal_r = palette[:, 0].tolist()
+    pal_g = palette[:, 1].tolist()
+    pal_b = palette[:, 2].tolist()
+    lut_best = lut.tolist()
 
     for y in range(height):
         row = buf[y].tolist()
         next_row = buf[y + 1].tolist() if y + 1 < height else None
-        row_noise = noise[y].tolist() if suppress else None
         out_row = [0] * width
 
         for x in range(width):
@@ -82,8 +109,6 @@ def dither(rgb, green_reduce=0.0, seed=0x9E3779B9):
             key = ((ri >> _SHIFT) << (2 * _BITS)) | ((gi >> _SHIFT) << _BITS) | (bi >> _SHIFT)
 
             index = lut_best[key]
-            if suppress and index == GREEN_INDEX and row_noise[x] < green_reduce:
-                index = lut_second[key]
             out_row[x] = index
 
             err_r = r - pal_r[index]
@@ -118,9 +143,10 @@ def dither(rgb, green_reduce=0.0, seed=0x9E3779B9):
     return out
 
 
-def quantize_no_dither(rgb):
+def quantize_no_dither(rgb, green_reduce=0.0):
     """Nearest palette colour per pixel, no error diffusion. Used for flat art."""
-    delta = rgb[:, :, None, :].astype(np.int32) - PALETTE[None, None, :, :].astype(np.int32)
+    palette = match_palette(green_reduce)
+    delta = rgb[:, :, None, :].astype(np.float32) - palette[None, None, :, :]
     return (delta * delta).sum(3).argmin(2).astype(np.uint8)
 
 

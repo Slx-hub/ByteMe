@@ -113,5 +113,5 @@ def render_indices(path, settings):
     if settings['dither_enabled']:
         indices = dither(array, float(settings['green_reduce']))
     else:
-        indices = quantize_no_dither(array)
+        indices = quantize_no_dither(array, float(settings['green_reduce']))
     return indices, staged
