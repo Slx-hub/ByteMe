@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PicToBytes</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">Pic<span>To</span>Bytes</div>
+  <div class="topbar-actions">
+    <button id="btn-scan" class="btn">Scan folder</button>
+    <button id="btn-render-all" class="btn">Render stale</button>
+    <button id="btn-deploy-all" class="btn">Deploy all</button>
+    <span class="spacer"></span>
+    <span id="device-label" class="device"></span>
+    <button id="btn-clear" class="btn btn-quiet">Clear display</button>
+  </div>
+</header>
+
+<main class="layout">
+
+  <aside class="gallery">
+    <div class="gallery-head">
+      <input id="filter" class="filter" type="search" placeholder="Filter…" autocomplete="off">
+      <div id="counts" class="counts"></div>
+    </div>
+    <div id="grid" class="grid"></div>
+  </aside>
+
+  <section id="editor" class="editor">
+    <div id="empty" class="empty">
+      <p>Select an image on the left.</p>
+      <p class="hint">Drop new photos into <code id="empty-src">original/</code> and hit <b>Scan folder</b>.</p>
+    </div>
+
+    <div id="workspace" class="workspace" hidden>
+
+      <div class="workspace-head">
+        <h1 id="title"></h1>
+        <div id="badges" class="badges"></div>
+        <span class="spacer"></span>
+        <div class="viewmode">
+          <button class="seg" data-view="result">Result</button>
+          <button class="seg" data-view="frame">Framing</button>
+          <button class="seg" data-view="split">Split</button>
+        </div>
+      </div>
+
+      <div class="workspace-body">
+      <div class="stage">
+        <div id="viewport" class="viewport">
+          <canvas id="canvas" width="800" height="480"></canvas>
+          <img id="preview" class="preview" alt="">
+          <div id="split-handle" class="split-handle" hidden></div>
+          <div id="busy" class="busy" hidden>rendering…</div>
+          <div id="legacy-note" class="legacy-note" hidden>
+            Already dithered by the old workflow — framing and grading are locked.
+          </div>
+        </div>
+
+        <div id="histogram" class="histogram"></div>
+
+        <div class="stage-actions">
+          <button id="btn-compare" class="btn btn-quiet" title="Hold to see the image before dithering">Hold to compare</button>
+          <span class="spacer"></span>
+          <button id="btn-send" class="btn">Send to frame</button>
+          <button id="btn-render" class="btn btn-primary">Render &amp; save</button>
+          <button id="btn-deploy" class="btn">Deploy</button>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="group">
+          <div class="group-head">
+            <h2>Framing</h2>
+            <button id="btn-rotate" class="mini">Rotate 90°</button>
+          </div>
+          <p class="note">Drag the image to move it, scroll to zoom.</p>
+          <label class="slider"><span>Zoom</span>
+            <input type="range" data-key="zoom" min="1" max="5" step="0.01">
+            <output></output>
+          </label>
+        </div>
+
+        <div class="group">
+          <div class="group-head"><h2>Grading</h2><button class="mini" data-reset="tone">Reset</button></div>
+          <label class="slider"><span>Brightness</span>
+            <input type="range" data-key="brightness" min="0.4" max="1.8" step="0.01"><output></output>
+          </label>
+          <label class="slider"><span>Contrast</span>
+            <input type="range" data-key="contrast" min="0.4" max="2.2" step="0.01"><output></output>
+          </label>
+          <label class="slider"><span>Saturation</span>
+            <input type="range" data-key="saturation" min="0" max="2.5" step="0.01"><output></output>
+          </label>
+          <label class="slider"><span>Sharpen</span>
+            <input type="range" data-key="sharpen" min="0" max="1" step="0.01"><output></output>
+          </label>
+        </div>
+
+        <div class="group">
+          <div class="group-head"><h2>Panel</h2></div>
+          <label class="slider accent-green"><span>Green reduction</span>
+            <input type="range" data-key="green_reduce" min="0" max="1" step="0.01"><output></output>
+          </label>
+          <p class="note">The panel over-renders green. This pushes that share of would-be
+             green pixels to their next-best colour.</p>
+          <label class="check">
+            <input type="checkbox" data-key="dither_enabled">
+            <span>Floyd–Steinberg dithering</span>
+          </label>
+          <p class="note">Off = hard colour snapping, better for flat graphics and text.</p>
+        </div>
+
+        <div class="group">
+          <div class="group-head"><h2>Image</h2></div>
+          <dl id="meta" class="meta"></dl>
+          <button id="btn-reset-all" class="mini wide">Reset everything</button>
+          <button id="btn-delete" class="mini wide danger">Delete image</button>
+        </div>
+      </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<div id="toasts" class="toasts"></div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

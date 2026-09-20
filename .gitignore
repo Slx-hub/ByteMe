@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+
+# Local machine settings: paths and the frame's IP.
+config.json
+library.json.tmp
+
+# Source photos and everything generated from them. All regenerable from
+# original/ + library.json, and not something to publish.
+original/
+input/
+output/
+legacy_renders/
