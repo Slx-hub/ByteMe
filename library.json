@@ -16,14 +16,14 @@
       "settings": {
         "brightness": 0.95,
         "contrast": 0.87,
-        "cx": 0.4699999999999999,
-        "cy": 0.5065831100787472,
+        "cx": 0.2850648609056969,
+        "cy": 0.27087356798272194,
         "dither_enabled": true,
-        "green_reduce": 1,
+        "green_reduce": 0.6,
         "rotate": 0,
         "saturation": 0.66,
         "sharpen": 0,
-        "zoom": 2
+        "zoom": 3.5833235364008504
       },
       "source": "original/IMG-20250717-WA0007.jpg",
       "source_mtime": 1758550806.3269122,

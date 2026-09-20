@@ -48,9 +48,28 @@ def handle_error(error):
 
 # ----------------------------------------------------------------- static
 
+def _asset_stamp(name):
+    try:
+        return str(int(os.path.getmtime(os.path.join(BASE_DIR, 'static', name))))
+    except OSError:
+        return '0'
+
+
 @app.route('/')
 def index():
-    return send_from_directory(os.path.join(BASE_DIR, 'static'), 'index.html')
+    """Serve the page with mtime-stamped asset URLs.
+
+    Without this the browser happily keeps running a cached app.js after an
+    edit, which looks exactly like the change not working.
+    """
+    with open(os.path.join(BASE_DIR, 'static', 'index.html'), encoding='utf-8') as handle:
+        page = handle.read()
+    for name in ('app.js', 'style.css'):
+        page = page.replace('/static/' + name, '/static/%s?v=%s' % (name, _asset_stamp(name)))
+    response = app.make_response(page)
+    response.headers['Content-Type'] = 'text/html; charset=utf-8'
+    response.headers['Cache-Control'] = 'no-store'
+    return response
 
 
 @app.route('/favicon.ico')
@@ -62,7 +81,9 @@ def favicon():
 
 @app.route('/static/<path:filename>')
 def static_files(filename):
-    return send_from_directory(os.path.join(BASE_DIR, 'static'), filename)
+    response = send_from_directory(os.path.join(BASE_DIR, 'static'), filename)
+    response.headers['Cache-Control'] = 'no-cache'
+    return response
 
 
 # ---------------------------------------------------------------- library

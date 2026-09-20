@@ -404,9 +404,15 @@ function setupGestures() {
     return image && !image.legacy && state.sourceImage;
   };
 
-  // Without this the browser starts its own image/text drag a few pixels in
-  // and the pointermove stream stops arriving.
+  // Chrome starts its own image drag a few pixels in, which swallows the
+  // pointermove stream. Cancelling mousedown is what actually stops it --
+  // preventDefault on pointerdown alone is not enough -- and dragstart is
+  // cancelled too in case a drag is initiated some other way.
+  viewport.addEventListener('mousedown', (event) => {
+    if (editable()) event.preventDefault();
+  });
   viewport.addEventListener('dragstart', (event) => event.preventDefault());
+  el('preview').addEventListener('dragstart', (event) => event.preventDefault());
 
   viewport.addEventListener('pointerdown', (event) => {
     if (!editable()) return;

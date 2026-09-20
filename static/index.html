@@ -52,8 +52,8 @@
       <div class="workspace-body">
       <div class="stage">
         <div id="viewport" class="viewport">
-          <canvas id="canvas" width="800" height="480"></canvas>
-          <img id="preview" class="preview" alt="">
+          <canvas id="canvas" width="800" height="480" draggable="false"></canvas>
+          <img id="preview" class="preview" alt="" draggable="false">
           <div id="split-handle" class="split-handle" hidden></div>
           <div id="busy" class="busy" hidden>rendering…</div>
           <div id="legacy-note" class="legacy-note" hidden>
@@ -106,8 +106,9 @@
           <label class="slider accent-green"><span>Green reduction</span>
             <input type="range" data-key="green_reduce" min="0" max="1" step="0.01"><output></output>
           </label>
-          <p class="note">The panel over-renders green. This pushes that share of would-be
-             green pixels to their next-best colour.</p>
+          <p class="note">The panel over-renders green, and its green doubles as the
+             palette's midtone. This matches against a more saturated green, so fewer
+             pixels are spent on it.</p>
           <label class="check">
             <input type="checkbox" data-key="dither_enabled">
             <span>Floyd–Steinberg dithering</span>
