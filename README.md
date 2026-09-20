@@ -74,13 +74,17 @@ dial it by number rather than by eye.
 | Green reduction | See above |
 | Floyd–Steinberg | Off = hard colour snapping, better for flat graphics and text |
 
-## Legacy images
+## Images with no original
 
-The 13 images that only exist as already-dithered PNGs in `input/` (no file in
-`original/`) are listed and deployable but locked for editing — their render
-*is* their source. Re-rendering one is a no-op and produces a byte-identical
-`.glds`. Drop a real original into `original/` under the same name and the entry
-unlocks.
+An image that exists only as an already-dithered PNG in `input/`, with no file
+in `original/`, is listed and deployable but locked for editing — its render
+*is* its source, so there is nothing to re-crop or re-grade from. Drop a real
+photo into `original/` under the same name and the entry unlocks on the next
+scan.
+
+Matching is purely by filename stem. A restored photo saved under a different
+name creates a *new* entry instead of unlocking the old one, which is usually
+what you want: re-frame the new one and delete the stale render.
 
 ## Talking to the frame
 
@@ -112,10 +116,15 @@ Firmware endpoints (`Arduino-Collection/smart_picture_frame/wifi`):
 
 ## legacy_renders/
 
-The dithered renders from the old Paint.NET workflow, before this tool existed —
-reconstructed losslessly from the `.glds` files GLaDOS was already serving. Keep
-them as a framing reference: `input/` and `output/` are owned by the app and are
-overwritten whenever you render, but these are not touched by anything.
+Dithered renders whose source photo no longer exists anywhere — reconstructed
+losslessly from the `.glds` files GLaDOS was already serving. Currently
+`christmas_18` and `molly_tired`. They are the only surviving copy of those two
+pictures, so nothing in the app writes to this folder.
+
+To put one back on the frame, copy its `.glds` from the GLaDOS folder, or
+re-dither the PNG. A dithered image stores tone as local dot density, so a
+gaussian blur of about 1.0 recovers a usable continuous-tone version that can be
+re-graded and re-dithered — capped at 800×480, with no extra detail to recover.
 
 ## Configuration
 
