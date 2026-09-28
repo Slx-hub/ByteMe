@@ -9,6 +9,7 @@ import time
 
 from PIL import Image
 
+from . import remote
 from .config import BASE_DIR, config
 from .dither import colour_histogram
 from .palette import indices_to_glds, indices_to_rgb
@@ -211,27 +212,46 @@ class Library:
             self.save()
         return self.status(key)
 
-    def deploy(self, key):
-        """Copy the .glds into the folder GLaDOS draws its random images from."""
+    def deploy(self, key, push=True):
+        """Copy the .glds into the folder GLaDOS draws its random images from.
+
+        With push, it is also copied straight onto the Pi, and the status carries
+        how that went under 'remote'. The local copy stands either way: it is the
+        one that gets committed.
+        """
         glds = self.glds_path(key)
         if not os.path.exists(glds):
             raise FileNotFoundError('%s has not been rendered yet' % key)
         os.makedirs(config.deploy_dir, exist_ok=True)
         shutil.copy2(glds, self.deploy_path(key))
-        return self.status(key)
+        status = self.status(key)
+        if push:
+            status['remote'] = self.push_remote([key])
+        return status
+
+    def push_remote(self, keys):
+        """Copy already deployed images onto the Pi, in one connection."""
+        names = [os.path.basename(self.deploy_path(key)) for key in keys]
+        return remote.attempt(remote.push, config.deploy_dir, names)
 
     def undeploy(self, key):
         target = self.deploy_path(key)
         if os.path.exists(target):
             os.remove(target)
-        return self.status(key)
+        status = self.status(key)
+        status['remote'] = remote.attempt(remote.remove, [os.path.basename(target)])
+        return status
 
     def glds_bytes(self, key):
         with open(self.glds_path(key), 'rb') as handle:
             return handle.read()
 
     def delete(self, key):
-        """Remove the entry and everything generated from it, including the source."""
+        """Remove the entry and everything generated from it, including the source.
+
+        A deployed image goes from the Pi too; returns how that went, or None.
+        """
+        deployed = os.path.exists(self.deploy_path(key))
         with _lock:
             for path in (self.render_path(key), self.glds_path(key), self.deploy_path(key)):
                 if os.path.exists(path):
@@ -241,6 +261,9 @@ class Library:
                 os.remove(source)
             self.entries.pop(key, None)
             self.save()
+        if deployed:
+            return remote.attempt(remote.remove, [os.path.basename(self.deploy_path(key))])
+        return None
 
 
 def png_bytes(image):

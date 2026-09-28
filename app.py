@@ -192,8 +192,7 @@ def api_undeploy(key):
 
 @app.route('/api/image/<key>', methods=['DELETE'])
 def api_delete(key):
-    library.delete(key)
-    return jsonify({'ok': True})
+    return jsonify({'ok': True, 'remote': library.delete(key)})
 
 
 # ------------------------------------------------------------------ batch
@@ -220,11 +219,14 @@ def api_deploy_all():
         if not status['has_glds']:
             continue
         try:
-            library.deploy(status['name'])
+            library.deploy(status['name'], push=False)
             deployed.append(status['name'])
         except Exception as error:
             failed.append({'name': status['name'], 'error': str(error)})
-    return jsonify({'deployed': deployed, 'failed': failed, 'images': library.all_status()})
+    # One scp for the lot, not a connection per image.
+    remote = library.push_remote(deployed)
+    return jsonify({'deployed': deployed, 'failed': failed, 'remote': remote,
+                    'images': library.all_status()})
 
 
 # ----------------------------------------------------------------- device
@@ -265,6 +267,8 @@ if __name__ == '__main__':
     print('PicToBytes')
     print('  library : %d images' % len(library.entries))
     print('  deploy  : %s' % config.deploy_dir)
+    if config['remote_host']:
+        print('  pi      : %s:%s' % (config['remote_host'], config['remote_dir']))
     print('  device  : %s' % config['device_url'])
     print('  open    : http://localhost:%d' % config['port'])
     app.run(host='0.0.0.0', port=config['port'], debug=False, threaded=True)

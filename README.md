@@ -16,7 +16,8 @@ python app.py          →  http://localhost:5000
    `output/<name>.glds` (the 192000-byte payload).
 5. **Deploy** copies the `.glds` into
    `C:/dev/Glados/GLaDOSHomeAssistant/lib/pic_frame_images/`, which is where
-   GLaDOS picks its random image from.
+   GLaDOS picks its random image from, and then straight onto the Pi — see
+   [Deploying to the Pi](#deploying-to-the-pi).
 
 **Send to frame** skips all of that and POSTs what you are currently looking at
 straight to the ESP32, for checking colours on the real panel before committing.
@@ -94,6 +95,24 @@ Matching is purely by filename stem. A restored photo saved under a different
 name creates a *new* entry instead of unlocking the old one, which is usually
 what you want: re-frame the new one and delete the stale render.
 
+## Deploying to the Pi
+
+The local deploy folder is GLaDOS' git checkout on this PC, so on its own a
+deploy only reaches the Pi after a commit, a push, and a `git pull` on the Pi.
+Deploy skips that round trip: after the local copy it `scp`s the `.glds` into
+the Pi's own checkout (`remote_host`:`remote_dir`). **Deploy all** sends
+everything in one connection. Deleting a deployed image removes it from the Pi
+as well.
+
+Git will not pull a file over an untracked copy of it, even an identical one.
+So if an image that was only copied is later committed from this PC, delete
+the Pi's copy before `git pull` there.
+
+It uses the system `ssh`/`scp` with `BatchMode`, so it needs key auth to the
+host and never waits on a password prompt. If the Pi is unreachable the local
+deploy still happens and the toast says why the Pi copy did not. Set
+`remote_host` to `""` to turn it off.
+
 ## Talking to the frame
 
 The panel takes ~30s to refresh and then rests for 2 minutes, and the firmware
@@ -144,6 +163,9 @@ re-graded and re-dithered — capped at 800×480, with no extra detail to recove
 | `render_dir` | `input` |
 | `output_dir` | `output` |
 | `deploy_dir` | `C:/dev/Glados/GLaDOSHomeAssistant/lib/pic_frame_images` |
+| `remote_host` | `Glados` — ssh host (a `~/.ssh/config` alias), `""` disables |
+| `remote_dir` | `/home/pi/GLaDOSHomeAssistant/lib/pic_frame_images` |
+| `remote_timeout` | `30` — seconds per scp/ssh call |
 | `device_url` | `http://192.168.178.42` |
 | `default_green_reduce` | `0.0` — raise it if you always want green pulled back |
 | `port` | `5000` |
@@ -172,6 +194,7 @@ pictobytes/dither.py   serial Floyd–Steinberg with green suppression
 pictobytes/pipeline.py crop → scale → grade → dither
 pictobytes/library.py  metadata, folder scanning, render, deploy
 pictobytes/device.py   the frame: readiness checks and upload
+pictobytes/remote.py   the Pi: copying deployed images over scp
 pictobytes/config.py   config.json
 static/                the UI
 ```

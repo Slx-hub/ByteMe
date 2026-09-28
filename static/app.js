@@ -48,6 +48,14 @@ function toast(message, kind) {
   setTimeout(() => node.remove(), kind === 'error' ? 6000 : 2800);
 }
 
+// Finish a deploy/delete toast with what happened on the Pi. `remote` is null
+// when no Pi is configured (or there was nothing to do there).
+function toastWithRemote(message, remote, verb) {
+  if (!remote) toast(message, 'ok');
+  else if (remote.ok) toast(`${message}, ${verb} ${remote.host}`, 'ok');
+  else toast(`${message}, but not on ${remote.host}: ${remote.error}`, 'error');
+}
+
 async function api(path, options) {
   const response = await fetch(path, options);
   if (!response.ok) {
@@ -557,9 +565,9 @@ function wireControls() {
   el('btn-deploy').onclick = withBusy(async () => {
     const image = current();
     if (image.stale) await postJSON(`/api/image/${encodeURIComponent(image.name)}/render`);
-    const status = await postJSON(`/api/image/${encodeURIComponent(image.name)}/deploy`);
+    const { remote, ...status } = await postJSON(`/api/image/${encodeURIComponent(image.name)}/deploy`);
     mergeStatus(status);
-    toast(`${status.name} deployed`, 'ok');
+    toastWithRemote(`${status.name} deployed`, remote, 'copied to');
   });
 
   el('btn-send').onclick = withBusy(async (button) => {
@@ -577,12 +585,12 @@ function wireControls() {
   el('btn-delete').onclick = withBusy(async () => {
     const name = state.selected;
     if (!confirm(`Delete ${name}, its render, its payload and the source file?`)) return;
-    await api(`/api/image/${encodeURIComponent(name)}`, { method: 'DELETE' });
+    const result = await api(`/api/image/${encodeURIComponent(name)}`, { method: 'DELETE' });
     state.selected = null;
     el('workspace').hidden = true;
     el('empty').hidden = false;
     await refresh();
-    toast(`${name} deleted`, 'ok');
+    toastWithRemote(`${name} deleted`, result.remote, 'removed from');
   });
 
   el('btn-scan').onclick = withBusy(async () => {
@@ -610,7 +618,7 @@ function wireControls() {
     const result = await postJSON('/api/deploy_all');
     state.images = result.images;
     renderGallery();
-    toast(`Deployed ${result.deployed.length} to GLaDOS`, 'ok');
+    toastWithRemote(`Deployed ${result.deployed.length} to GLaDOS`, result.remote, 'copied to');
   });
 
   el('btn-clear').onclick = withBusy(async () => {

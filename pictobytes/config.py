@@ -15,6 +15,11 @@ DEFAULTS = {
     'output_dir': 'output',
     # GLaDOS picks a random .glds from here for the scheduled rotation.
     'deploy_dir': 'C:/dev/Glados/GLaDOSHomeAssistant/lib/pic_frame_images',
+    # The Pi running GLaDOS, as an ssh host (a ~/.ssh/config alias is fine).
+    # Deploying also copies straight into remote_dir there. Empty turns that off.
+    'remote_host': 'Glados',
+    'remote_dir': '/home/pi/GLaDOSHomeAssistant/lib/pic_frame_images',
+    'remote_timeout': 30,
     # The ESP32 itself, for pushing a single image while colour grading.
     'device_url': 'http://192.168.178.42',
     'device_timeout': 30,
