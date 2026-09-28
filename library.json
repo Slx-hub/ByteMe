@@ -203,6 +203,35 @@
       "source_mtime": 1789899848.596391,
       "stale": false
     },
+    "golf_squad": {
+      "histogram": [
+        0.3656770833333333,
+        0.291640625,
+        0.14135416666666667,
+        0.08165364583333333,
+        0.06335416666666667,
+        0.00653125,
+        0.0497890625
+      ],
+      "legacy": false,
+      "name": "golf_squad",
+      "rendered_at": 1790591669.4862523,
+      "settings": {
+        "brightness": 1.02,
+        "contrast": 0.76,
+        "cx": 0.4156993252744131,
+        "cy": 0.7036727117273128,
+        "dither_enabled": true,
+        "green_reduce": 0,
+        "rotate": 0,
+        "saturation": 1.73,
+        "sharpen": 0.27,
+        "zoom": 1.349858807576003
+      },
+      "source": "original/golf_squad.png",
+      "source_mtime": 1790591192.9601264,
+      "stale": false
+    },
     "gull": {
       "histogram": [
         0.0446328125,
@@ -752,6 +781,35 @@
       },
       "source": "original/lissabon.jpg",
       "source_mtime": 1758550806.2607794,
+      "stale": false
+    },
+    "l\u00fcwi_katzenkopf": {
+      "histogram": [
+        0.18226302083333334,
+        0.2004765625,
+        0.2388125,
+        0.1590546875,
+        0.0889765625,
+        0.019713541666666667,
+        0.110703125
+      ],
+      "legacy": false,
+      "name": "l\u00fcwi_katzenkopf",
+      "rendered_at": 1790590119.5375166,
+      "settings": {
+        "brightness": 1.22,
+        "contrast": 0.8,
+        "cx": 0.5,
+        "cy": 0.47200000000000103,
+        "dither_enabled": true,
+        "green_reduce": 0,
+        "rotate": 0,
+        "saturation": 1.1,
+        "sharpen": 0.37,
+        "zoom": 1
+      },
+      "source": "original/l\u00fcwi_katzenkopf.png",
+      "source_mtime": 1790589822.6903734,
       "stale": false
     },
     "malaga": {
